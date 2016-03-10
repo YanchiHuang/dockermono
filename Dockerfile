@@ -6,7 +6,6 @@ FROM mono:3.10-onbuild
 RUN rm /etc/timezone \
     && echo "Asia/Taipei" > /etc/timezone \
     && chmod 644 /etc/timezone \
-    && dpkg-reconfigure --frontend noninteractive tzdata \
     && apt-get update \
     && apt-get install -y --no-install-recommends runit \
     && apt-get install -y --no-install-recommends cron \
