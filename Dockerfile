@@ -2,7 +2,18 @@
 #
 # VERSION               0.0.1
 #
-FROM mono:3.10-onbuild
+FROM mono:4.2.2.30
+
+MAINTAINER Jo Shields <jo.shields@xamarin.com>
+
+RUN mkdir -p /usr/src/app/source /usr/src/app/build
+WORKDIR /usr/src/app/source
+
+ONBUILD COPY . /usr/src/app/source
+ONBUILD RUN nuget restore -NonInteractive
+ONBUILD RUN xbuild /property:Configuration=Release /property:OutDir=/usr/src/app/build/
+ONBUILD WORKDIR /usr/src/app/build
+
 RUN rm /etc/timezone \
     && echo "Asia/Taipei" > /etc/timezone \
     && chmod 644 /etc/timezone \
@@ -22,6 +33,6 @@ RUN rm /etc/timezone \
     && apt-get purge -y --auto-remove \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
-CMD ["mono", "./test.exe"]
+CMD ["mono", ""]
 
 # Finished
