@@ -4,7 +4,7 @@
 #
 FROM mono:4.2.2.30
 
-MAINTAINER 
+MAINTAINER Yanchi
 
 RUN mkdir -p /usr/src/app/source /usr/src/app/build
 WORKDIR /usr/src/app/source
