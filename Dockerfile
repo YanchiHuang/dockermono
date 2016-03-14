@@ -1,10 +1,10 @@
-# mono 3.10-onbuild
+# mono 4.2.2.30-onbuild
 #
 # VERSION               0.0.1
 #
 FROM mono:4.2.2.30
 
-MAINTAINER Jo Shields <jo.shields@xamarin.com>
+MAINTAINER 
 
 RUN mkdir -p /usr/src/app/source /usr/src/app/build
 WORKDIR /usr/src/app/source
@@ -33,6 +33,5 @@ RUN rm /etc/timezone \
     && apt-get purge -y --auto-remove \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
-CMD ["mono", ""]
- 
+#CMD ["mono", ""] 
 # Finished
