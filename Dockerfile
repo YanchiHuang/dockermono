@@ -7,11 +7,10 @@ FROM mono:4.2.2.30
 MAINTAINER Yanchi
 
 WORKDIR /etc
+ENV TZ Asia/Shanghai
 
-RUN rm /etc/timezone \
-    && echo "Asia/Taipei" > /etc/timezone \
-    && chmod 644 /etc/timezone \
-    && apt-get update \
+
+RUN apt-get update \
     && apt-get install -y --no-install-recommends runit \
     && apt-get install -y --no-install-recommends cron \
     
