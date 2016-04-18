@@ -6,13 +6,7 @@ FROM mono:4.2.2.30
 
 MAINTAINER Yanchi
 
-RUN mkdir -p /usr/src/app/source /usr/src/app/build
-WORKDIR /usr/src/app/source
-
-ONBUILD COPY . /usr/src/app/source
-ONBUILD RUN nuget restore -NonInteractive
-ONBUILD RUN xbuild /property:Configuration=Release /property:OutDir=/usr/src/app/build/
-ONBUILD WORKDIR /usr/src/app/build
+WORKDIR /etc
 
 RUN rm /etc/timezone \
     && echo "Asia/Taipei" > /etc/timezone \
@@ -20,6 +14,7 @@ RUN rm /etc/timezone \
     && apt-get update \
     && apt-get install -y --no-install-recommends runit \
     && apt-get install -y --no-install-recommends cron \
+    
     && mkdir /etc/service/cron \
     && echo '#!/bin/sh' > /etc/service/cron/run \
     && echo 'exec /usr/sbin/cron -f' >> /etc/service/cron/run \
@@ -33,5 +28,6 @@ RUN rm /etc/timezone \
     && apt-get purge -y --auto-remove \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
-#CMD ["mono", ""] 
+    
+CMD ["runsv", "/etc/service/cron"]
 # Finished
