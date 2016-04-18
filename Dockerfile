@@ -29,5 +29,5 @@ RUN rm /etc/timezone \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
     
-CMD ["runsv", "/etc/service/cron"]
+#CMD ["runsv", "/etc/service/cron"]
 # Finished
