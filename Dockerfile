@@ -28,5 +28,5 @@ RUN apt-get update \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
     
-CMD ["/etc/service/cron"]
+#CMD ["/etc/service/cron"]
 # Finished
