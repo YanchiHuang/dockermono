@@ -10,7 +10,10 @@ WORKDIR /etc
 ENV TZ Asia/Taipei
 
 
-RUN apt-get update \
+RUN rm /etc/timezone \
+    && echo "Asia/Taipei" > /etc/timezone \
+    && chmod 644 /etc/timezone \
+    && apt-get update \
     && apt-get install -y --no-install-recommends runit \
     && apt-get install -y --no-install-recommends vim \
     && apt-get install -y --no-install-recommends cron \
@@ -26,7 +29,8 @@ RUN apt-get update \
     && rm -f /etc/cron.weekly/fstrim \
     && apt-get purge -y --auto-remove \
     && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
+    && rm -rf /var/lib/apt/lists/* \
+    && service cron start
     
 #CMD ["/etc/service/cron"]
 # Finished
