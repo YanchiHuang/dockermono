@@ -14,7 +14,7 @@ RUN rm /etc/timezone \
     && chmod 644 /etc/timezone
     
 #執行apt-get更新套件，設定Cron工作排程器
-RUN  apt-get update \
+RUN apt-get update \
     && apt-get install -y --no-install-recommends vim \
     && apt-get install -y --no-install-recommends cron \
     && mkdir /etc/service/cron \
