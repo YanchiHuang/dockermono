@@ -15,6 +15,7 @@ RUN rm /etc/timezone \
     
 #執行apt-get更新套件，設定Cron工作排程器
 RUN apt-get update \
+    && apt-get install -y --no-install-recommends runit \
     && apt-get install -y --no-install-recommends vim \
     && apt-get install -y --no-install-recommends cron \
     && mkdir /etc/service/cron \
