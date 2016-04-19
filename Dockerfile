@@ -32,7 +32,7 @@ RUN apt-get update \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* 
 #啟動服務
-RUN service cron start
+#RUN service cron start
     
-#CMD ["/etc/service/cron"]
+CMD ["service","cron start"]
 # Finished
