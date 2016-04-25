@@ -35,5 +35,5 @@ RUN apt-get update \
 #RUN service cron start
 #CMD ["runsv", "/etc/service/cron &"] 
 #CMD ["service","cron start"]
-ENTRYPOINT ["/etc/init.d/cron","start"]
+#ENTRYPOINT ["/etc/init.d/cron","start"]
 # Finished
