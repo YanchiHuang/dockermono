@@ -9,9 +9,9 @@ MAINTAINER Yanchi
 WORKDIR /etc
 
 #設定時區
-RUN rm /etc/timezone \
-    && echo "Asia/Taipei" > /etc/timezone \
-    && chmod 644 /etc/timezone
+#RUN rm /etc/timezone \
+#    && echo "Asia/Taipei" > /etc/timezone \
+#    && chmod 644 /etc/timezone
     
 #執行apt-get更新套件，設定Cron工作排程器
 RUN apt-get update \
@@ -35,4 +35,5 @@ RUN apt-get update \
 #RUN service cron start
 #CMD ["runsv", "/etc/service/cron &"] 
 #CMD ["service","cron start"]
+CMD ["/etc/init.d/cron","start"]
 # Finished
