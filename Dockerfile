@@ -2,7 +2,7 @@
 #
 # VERSION               0.0.1
 #
-FROM mono:4.2.2.30
+FROM mono:latest
 
 MAINTAINER Yanchi
 #設定工作目錄
