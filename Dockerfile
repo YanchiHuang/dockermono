@@ -36,7 +36,7 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/* 
 #啟動服務
 #RUN service cron start
-#CMD ["runsv", "/etc/service/cron &"] 
+CMD ["runsv", "/etc/service/cron"]
 #CMD ["service","cron start"]
 #ENTRYPOINT ["/etc/init.d/cron","start"]
 # Finished
